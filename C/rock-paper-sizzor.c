@@ -64,6 +64,7 @@ bool main()
         /* check if player1 quits the game */
 
         } else if (!strcmp(player1_choice, "quit")) {
+            puts("\n--> Thanks for playing!");
             running = false;
             continue;
 

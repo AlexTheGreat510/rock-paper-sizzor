@@ -66,6 +66,7 @@ func main() {
             /* check if player1 quits the game */
 
             case "quit":
+                fmt.Println("\n--> Thanks for playing!");
                 running = false
                 continue
         }

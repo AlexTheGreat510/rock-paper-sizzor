@@ -35,6 +35,7 @@ while running:
         # check if player1 quits the game
 
         case "quit":
+            print("\n--> Thanks for playing!")
             running = False
             continue
 

@@ -87,7 +87,9 @@ int main()
         /* check if player1 quits the game */
 
         } else if (player1_choice == "quit") {
+            cout << "--> Thanks for playing!" << endl;
             running = false;
+            continue;
 
         /* check if tie between players */
 

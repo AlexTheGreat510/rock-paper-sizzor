@@ -49,7 +49,9 @@ while running do
     -- check if player1 quits the game
 
     elseif player1_choice == "quit" then
+        print("\n--> Thanks for playing!")
         running = false
+        goto continue
     end
 
     -- let player2 choose
