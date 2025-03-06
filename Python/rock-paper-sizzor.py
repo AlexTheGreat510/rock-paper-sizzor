@@ -45,6 +45,12 @@ while running:
             game_help()
             continue
 
+        # check if player1 asks for stats
+
+        case "stats":
+            print(f"\nPLAYER-1 [{player1_score}] vs PLAYER-2 [{player2_score}]")
+            continue
+
         # check if player1 resets the game
 
         case "reset":

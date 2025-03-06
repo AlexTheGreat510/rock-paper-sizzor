@@ -13,7 +13,7 @@
 
 bool game_help()
 {
-    puts("Rock, Paper, Sizzor, Reset, Quit, Help");
+    puts("Rock, Paper, Sizzor, Stats, Reset, Quit, Help");
     return NO_ERROR;
 }
 
@@ -54,9 +54,15 @@ bool main()
         printf("\nPLAYER-1 [%d]--> ", player1_score);
         scanf("%s", &player1_choice);
 
+        /* check if player1 asks for stats */
+
+        if (!strcmp(player1_choice, "stats")) {
+            printf("\nPLAYER-1 [%d] vs PLAYER-2 [%d]\n", player1_score, player2_score);
+            continue;
+
         /* check if player1 resets the game */
 
-        if (!strcmp(player1_choice, "reset")) {
+        } else if (!strcmp(player1_choice, "reset")) {
             player1_score = 0;
             player2_score = 0;
             continue;

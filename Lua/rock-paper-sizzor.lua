@@ -15,7 +15,7 @@ local choices = {"rock", "paper", "sizzor"}
 -- function to show game help
 
 local function game_help()
-    print("Rock, Paper, Sizzor, Reset, Quit, Help")
+    print("Rock, Paper, Sizzor, Stats, Reset, Quit, Help")
 end
 
 -- show the game help
@@ -39,6 +39,11 @@ while running do
         player1_score = 0
         player2_score = 0
         goto continue
+
+    -- check if player1 asks for stats
+
+    elseif player1_choice == "stats" then
+        print(string.format("PLAYER-1 [%d] vs PLAYER-2 [%d]", player1_score, player2_score))
 
     -- check if player1 asks for help
 

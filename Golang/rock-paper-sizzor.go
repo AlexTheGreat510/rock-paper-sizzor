@@ -10,7 +10,7 @@ import (
 /* function to show game help */
 
 func gameHelp() {
-    fmt.Println("Rock, Paper, Sizzor, Reset, Quit, Help")
+    fmt.Println("Rock, Paper, Sizzor, Stats, Reset, Quit, Help")
 }
 
 /* function to be run by program */
@@ -63,19 +63,25 @@ func main() {
                 gameHelp()
                 continue
 
+            /* check if player1 asks for stats */
+
+            case "stats":
+                fmt.Printf("\nPLAYER-1 [%d] vs PLAYER-2 [%d]\n", player1Score, player2Score)
+                continue
+
             /* check if player1 quits the game */
 
             case "quit":
-                fmt.Println("\n--> Thanks for playing!");
+                fmt.Println("\n\n--> Thanks for playing!");
                 running = false
                 continue
         }
 
         /* let player2 choose */
-        
+
         player2Choice = choices[rand.Intn(3)]
         fmt.Printf("PLAYER-2 [%d] --> %s\n\n", player2Score, player2Choice)
-        
+
         /* check if player1 is the winner */
 
         if (player1Choice == "rock" && player2Choice == "sizzor" || player1Choice =="paper" && player2Choice == "rock" || player1Choice == "sizzor" && player2Choice == "paper") {

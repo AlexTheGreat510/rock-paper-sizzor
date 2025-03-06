@@ -11,7 +11,7 @@ using namespace std;
 
 int game_help()
 {
-    cout << "Rock, Paper, Sizzor, Reset, Quit, Help" << endl;
+    cout << "Rock, Paper, Sizzor, Stats, Reset, Quit, Help" << endl;
     return NO_ERROR;
 }
 
@@ -52,24 +52,11 @@ int main()
         cout << endl << "PLAYER-1 [" << player1_score << "]--> ";
         cin >> player1_choice;
 
-        /* let player2 choose */
+        /* check if player1 asks for stats */
 
-        player2_choice = choices[rand() % 2];
-        cout << "PLAYER-2 [" << player2_score << "]--> " << player2_choice << endl << endl;
-
-        /* check if player1 is the winner */
-
-        if (player1_choice == "rock" && player2_choice == "sizzor" || player1_choice == "paper" && player2_choice == "rock" || player1_choice == "sizzor" && player2_choice == "paper") {
-            ++player1_score;
-            cout << "PLAYER-1 [" << player1_score << "]--> Winner!" << endl;
-            cout << "PLAYER-2 [" << player2_score << "]--> Looser!" << endl;
-
-        /* check if player2 is the winner */
-
-        } else if (player2_choice == "rock" && player1_choice == "sizzor" || player2_choice == "paper" && player1_choice == "rock" || player2_choice == "sizzor" && player1_choice == "paper") {
-            ++player2_score;
-            cout << "PLAYER-2 [" << player2_score << "]--> Winner!" << endl;
-            cout << "PLAYER-1 [" << player1_score << "]--> Looser!" << endl;
+        if (player1_choice == "stats") {
+            cout << endl << "PLAYER-1 [" << player1_score << "] vs PLAYER-2 [" << player2_score << "]" << endl;
+            continue;
 
         /* check if player1 resets the game */
 
@@ -90,6 +77,26 @@ int main()
             cout << "--> Thanks for playing!" << endl;
             running = false;
             continue;
+        }
+
+        /* let player2 choose */
+
+        player2_choice = choices[rand() % 2];
+        cout << "PLAYER-2 [" << player2_score << "]--> " << player2_choice << endl << endl;
+
+        /* check if player1 is the winner */
+
+        if (player1_choice == "rock" && player2_choice == "sizzor" || player1_choice == "paper" && player2_choice == "rock" || player1_choice == "sizzor" && player2_choice == "paper") {
+            ++player1_score;
+            cout << "PLAYER-1 [" << player1_score << "]--> Winner!" << endl;
+            cout << "PLAYER-2 [" << player2_score << "]--> Looser!" << endl;
+
+        /* check if player2 is the winner */
+
+        } else if (player2_choice == "rock" && player1_choice == "sizzor" || player2_choice == "paper" && player1_choice == "rock" || player2_choice == "sizzor" && player1_choice == "paper") {
+            ++player2_score;
+            cout << "PLAYER-2 [" << player2_score << "]--> Winner!" << endl;
+            cout << "PLAYER-1 [" << player1_score << "]--> Looser!" << endl;
 
         /* check if tie between players */
 
