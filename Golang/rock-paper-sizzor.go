@@ -16,6 +16,10 @@ func gameHelp() {
 /* function to be run by program */
 
 func main() {
+    
+    /* default run count */
+
+    var runCount int = 0
 
     /* default player scores */
 
@@ -40,10 +44,14 @@ func main() {
     var running bool = true
 
     for running {
+        
+        /* increment run count */
+
+        runCount++;
 
         /* let player1 choose */
 
-        fmt.Printf("\nPLAYER-1 [%d] --> ", player1Score)
+        fmt.Printf("\n(%d) PLAYER-1 [%d] --> ", runCount, player1Score)
         fmt.Scanln(&player1Choice)
 
         /* check player1 choices */
@@ -53,6 +61,7 @@ func main() {
             /* check if player1 resets the game */
 
             case "reset":
+                runCount = 0
                 player1Score = 0
                 player2Score = 0
                 continue
@@ -66,13 +75,13 @@ func main() {
             /* check if player1 asks for stats */
 
             case "stats":
-                fmt.Printf("\nPLAYER-1 [%d] vs PLAYER-2 [%d]\n", player1Score, player2Score)
+                fmt.Printf("\n(%d) PLAYER-1 [%d] vs PLAYER-2 [%d]\n", runCount, player1Score, player2Score)
                 continue
 
             /* check if player1 quits the game */
 
             case "quit":
-                fmt.Println("\n\n--> Thanks for playing!");
+                fmt.Println("\n--> Thanks for playing!");
                 running = false
                 continue
         }
@@ -80,21 +89,21 @@ func main() {
         /* let player2 choose */
 
         player2Choice = choices[rand.Intn(3)]
-        fmt.Printf("PLAYER-2 [%d] --> %s\n\n", player2Score, player2Choice)
+        fmt.Printf("(%d) PLAYER-2 [%d] --> %s\n\n", runCount, player2Score, player2Choice)
 
         /* check if player1 is the winner */
 
         if (player1Choice == "rock" && player2Choice == "sizzor" || player1Choice =="paper" && player2Choice == "rock" || player1Choice == "sizzor" && player2Choice == "paper") {
             player1Score++;
-            fmt.Printf("PLAYER-1 [%d] --> Winner!\n", player1Score)
-            fmt.Printf("PLAYER-2 [%d] --> Looser!\n", player2Score)
+            fmt.Printf("(%d) PLAYER-1 [%d] --> Winner!\n", runCount, player1Score)
+            fmt.Printf("(%d) PLAYER-2 [%d] --> Looser!\n", runCount, player2Score)
 
         /* check if player2 is the winner */
 
         } else if (player2Choice == "rock" && player1Choice == "sizzor" || player2Choice =="paper" && player1Choice == "rock" || player2Choice == "sizzor" && player1Choice == "paper") {
             player2Score++;
-            fmt.Printf("PLAYER-2 [%d] --> Winner!\n", player2Score)
-            fmt.Printf("PLAYER-1 [%d] --> Looser!\n", player1Score)
+            fmt.Printf("(%d) PLAYER-2 [%d] --> Winner!\n", runCount, player2Score)
+            fmt.Printf("(%d) PLAYER-1 [%d] --> Looser!\n", runCount, player1Score)
 
         /* check if tie between players */
 

@@ -1,3 +1,7 @@
+-- default run count
+
+local run_count = 0
+
 -- default player scores
 
 local player1_score = 0
@@ -28,14 +32,19 @@ local running = true
 
 while running do
 
+    -- increment run count
+    
+    run_count = run_count + 1
+
     -- let player1 choose
 
-    io.write(string.format("\nPLAYER-1 [%d]--> ", player1_score))
+    io.write(string.format("\n(%d) PLAYER-1 [%d]--> ", run_count, player1_score))
     player1_choice = io.read()
 
     -- check if player1 resets the game
 
     if player1_choice == "reset" then
+        run_count = 0
         player1_score = 0
         player2_score = 0
         goto continue
@@ -43,7 +52,7 @@ while running do
     -- check if player1 asks for stats
 
     elseif player1_choice == "stats" then
-        print(string.format("PLAYER-1 [%d] vs PLAYER-2 [%d]", player1_score, player2_score))
+        print(string.format("(%d) PLAYER-1 [%d] vs PLAYER-2 [%d]", run_count, player1_score, player2_score))
 
     -- check if player1 asks for help
 
@@ -62,21 +71,21 @@ while running do
     -- let player2 choose
 
     player2_choice = choices[math.random(3)]
-    print(string.format("PLAYER-2 [%d]--> %s\n", player2_score, player2_choice))
+    print(string.format("(%d) PLAYER-2 [%d]--> %s\n", run_count, player2_score, player2_choice))
 
     -- check if player1 is the winner
 
     if player1_choice == "rock" and player2_choice == "sizzor" or player1_choice == "paper" and player2_choice == "rock" or player1_choice == "sizzor" and player2_choice == "paper" then
         player1_score = player1_score + 1
-        print(string.format("PLAYER-1 [%d]--> Winner!", player1_score))
-        print(string.format("PLAYER-2 [%d]--> Looser!", player2_score))
+        print(string.format("(%d) PLAYER-1 [%d]--> Winner!", run_count, player1_score))
+        print(string.format("(%d) PLAYER-2 [%d]--> Looser!", run_count, player2_score))
 
     -- check if player2 is the winner
 
     elseif player2_choice == "rock" and player1_choice == "sizzor" or player2_choice == "paper" and player1_choice == "rock" or player2_choice == "sizzor" and player1_choice == "paper" then
         player2_score = player2_score + 1
-        print(string.format("PLAYER-2 [%d]--> Winner!", player2_score))
-        print(string.format("PLAYER-1 [%d]--> Looser!", player1_score))
+        print(string.format("(%d) PLAYER-2 [%d]--> Winner!", run_count, player2_score))
+        print(string.format("(%d) PLAYER-1 [%d]--> Looser!", run_count, player1_score))
 
     -- check if tie between players
 

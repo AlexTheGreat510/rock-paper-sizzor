@@ -21,6 +21,10 @@ bool game_help()
 
 bool main()
 {
+    /* default run count */
+
+    int run_count = 0;
+
     /* default player scores */
 
     int player1_score = 0;
@@ -49,20 +53,25 @@ bool main()
 
     while (running)
     {
+        /* increment run count */
+
+        ++run_count;
+
         /* let player1 choose */
 
-        printf("\nPLAYER-1 [%d]--> ", player1_score);
+        printf("\n(%d) PLAYER-1 [%d]--> ", run_count, player1_score);
         scanf("%s", &player1_choice);
 
         /* check if player1 asks for stats */
 
         if (!strcmp(player1_choice, "stats")) {
-            printf("\nPLAYER-1 [%d] vs PLAYER-2 [%d]\n", player1_score, player2_score);
+            printf("\n(%d) PLAYER-1 [%d] vs PLAYER-2 [%d]\n", run_count, player1_score, player2_score);
             continue;
 
         /* check if player1 resets the game */
 
         } else if (!strcmp(player1_choice, "reset")) {
+            run_count = 0;
             player1_score = 0;
             player2_score = 0;
             continue;
@@ -84,21 +93,21 @@ bool main()
         /* let player2 choose */
 
         player2_choice = choices[rand() % 3];
-        printf("PLAYER-2 [%d]--> %s\n\n", player2_score, player2_choice);
+        printf("(%d) PLAYER-2 [%d]--> %s\n\n", run_count, player2_score, player2_choice);
 
         /* check if player1 is the winner */
 
         if (!strcmp(player1_choice, "rock") && !strcmp(player2_choice, "sizzor") || !strcmp(player1_choice, "paper") && !strcmp(player2_choice, "rock") || !strcmp(player1_choice, "sizzor") && !strcmp(player2_choice, "paper")) {
             ++player1_score;
-            printf("PLAYER-1 [%d]--> Winner!\n", player1_score);
-            printf("PLAYER-2 [%d]--> Looser!\n", player2_score);
+            printf("(%d) PLAYER-1 [%d]--> Winner!\n", run_count, player1_score);
+            printf("(%d) PLAYER-2 [%d]--> Looser!\n", run_count, player2_score);
 
         /* check if player2 is the winner */
 
         } else if (!strcmp(player2_choice, "rock") && !strcmp(player1_choice, "sizzor") || !strcmp(player2_choice, "paper") && !strcmp(player1_choice, "rock") || !strcmp(player2_choice, "sizzor") && !strcmp(player1_choice, "paper")) {
             ++player2_score;
-            printf("PLAYER-2 [%d]--> Winner!\n", player2_score);
-            printf("PLAYER-1 [%d]--> Looser!\n", player1_score);
+            printf("(%d) PLAYER-2 [%d]--> Winner!\n", run_count, player2_score);
+            printf("(%d) PLAYER-1 [%d]--> Looser!\n", run_count, player1_score);
 
         /* check if tie between players */
 
